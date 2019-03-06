@@ -1,6 +1,5 @@
 package com.formation.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.*;
@@ -11,7 +10,11 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @Getter @Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +43,6 @@ public class Project {
     }
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt = updatedAt;
+        this.updatedAt = LocalDate.now();
     }
 }
